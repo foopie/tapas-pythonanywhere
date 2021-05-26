@@ -1,0 +1,37 @@
+{% extends 'tapasapp/base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}<title>Add to Menu</title>{% endblock %}
+</head>
+<body>
+    {% block sidebar %}
+    <li class="nav-item">
+        <a href="{% url 'view_menu' %}" class="nav-link active" aria-current="page">
+          <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+          Back to main
+        </a>
+      </li>
+    {% endblock %}
+
+    {% block content %}
+    <form action="{% url 'add_menu' %}" method="POST">{% csrf_token %}
+        <label for="dname">Dish Name</label>
+        <input type="text" name="dname" id="dname">
+
+        <label for="ctime">Cooking Time</label>
+        <input type="number" name="ctime" id="ctime">
+
+        <label for="ptime">Prep Time</label>
+        <input type="number" name="ptime" id="ptime">
+
+        <input type="submit">
+    </form>
+    {% endblock %}
+</body>
+</html>

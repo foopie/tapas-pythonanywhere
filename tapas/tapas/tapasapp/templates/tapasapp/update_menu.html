@@ -1,0 +1,17 @@
+{% extends 'tapasapp/base.html' %}
+{% load static %}
+
+{% block content %}
+<form action="{% url 'update_dish' pk=d.pk %}" method="POST">{% csrf_token %}
+    <label for="dname">Dish Name</label>
+    <input type="text" name="dname" id="dname" value="{{d.name}}" disabled>
+
+    <label for="ctime">Cooking Time</label>
+    <input type="number" name="ctime" id="ctime" value="{{d.cook_time}}">
+
+    <label for="ptime">Prep Time</label>
+    <input type="number" name="ptime" id="ptime" value="{{d.prep_time}}">
+
+    <input type="submit">
+</form>
+{% endblock %}
